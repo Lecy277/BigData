@@ -3,7 +3,7 @@ from pyspark import SparkConf, SparkContext
 import string
 import sys
 import re
-from bs4 import BeautifulSoup
+
 
 
 def removePunctuation(text):
@@ -18,9 +18,9 @@ def pass_filter(x):
 	return (len(x) > 0 or x != ' ' or x != None)
 
 if __name__ == "__main__":
-	conf = SparkConf().setAppName("My_Big_Data_Program").set("spark.executor.memory", "10g")
+	conf = SparkConf().setAppName("My_Big_Data_Program").set("spark.executor.memory", "8g")
 	sc = SparkContext(conf=conf)
-	lines = sc.wholeTextFiles("file:///C:/Users/lecy2/Desktop/wpcd/wp/1/*",12) # path to a text file in local file system
+	lines = sc.wholeTextFiles("file:///C:/Users/lecy2/Desktop/wpcd/wp/1/*",24) # path to a text file in local file system
 
 	#Run streaming query1 in scheduler pool1
 	sc.setLocalProperty("spark.scheduler.pool", "pool1")
